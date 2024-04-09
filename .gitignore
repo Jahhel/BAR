@@ -1,0 +1,4 @@
+__pychache__/
+*.sh
+*.pyc
+virtual/

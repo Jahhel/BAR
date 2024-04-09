@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content%}
+
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Cocktail Application - Rezeptliste</title>
+	<body>
+			    
+		<!-- Inhalt der Startseite -->
+	        <h1>liste aller vorhandenen Rezepte</h1>
+
+		<p> 
+		{% for rezeptname in rezepte%}
+		<details>
+			    <summary> {{ rezeptname}} </summary>
+			        Something small enough to escape casual notice.
+		</details>
+		{% endfor %}
+		</p>
+	</body>
+{% endblock %}

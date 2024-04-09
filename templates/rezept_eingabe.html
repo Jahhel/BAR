@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezept-Editor</title>
+</head>
+<body>
+<h2>Rezept-Editor</h2>
+
+<label for="cocktailName">Cocktailname:</label>
+<input type="text" id="cocktailName" placeholder="Gib dem Cocktail einen Namen"><br><br>
+
+<button onclick="zutatenZeileHinzufuegen()">Zutatenzeile hinzufügen</button>
+<table id="zutatenTabelle">
+    <thead>
+    <tr>
+        <th>Zutat</th>
+        <th>Menge</th>
+        <th>Einheit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Hier werden die Zutaten dynamisch hinzugefügt -->
+    {% for ingredient in ingredients%}
+    	<tr>
+		<td> {{ingredient}} </td>
+		<td> <input id ={{ingredient~"_amount"}} type="number" min="0">  </td>
+		<td> 
+			<select id={{ingredient~"_measurment"}}>
+				{% for measurment in unit %}
+					<option value= {{measurment}}> {{measurment}} </option>
+				{% endfor %}
+			</select>
+		</td>
+
+	</tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+<br>
+
+<input type="text" id="zubereitung" placeholder="Zubereitungsanweisungen" style="width: 100%;"><br><br>
+<button onclick="generiereJson()">JSON generieren</button>
+<button onclick="zeigeBenutzerdefinierteZutaten()">Benutzerdefinierte Zutaten anzeigen</button>
+
+<script src="eingabe.js">
+</script>
+
+<br><br>
+
+</body>
+</html>
+{% endblock %}
